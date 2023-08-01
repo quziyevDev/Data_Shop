@@ -1,11 +1,16 @@
 import { StyleProvider } from '@ant-design/cssinjs'
-import { Button } from 'antd'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { RouterProvider } from 'react-router-dom'
+import router from '@/router/router'
+
+const queryClient = new QueryClient()
 
 export default function RootProvider() {
 	return (
-		<StyleProvider hashPriority='high'>
-			<div>asdsadas</div>
-			<Button type='primary'>Ant Button</Button>
-		</StyleProvider>
+		<QueryClientProvider client={queryClient}>
+			<StyleProvider hashPriority='high'>
+				<RouterProvider router={router}/>
+			</StyleProvider>
+		</QueryClientProvider>
 	)
 }
