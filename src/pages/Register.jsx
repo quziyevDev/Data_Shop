@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useMutation } from 'react-query'
 
 export default function Register() {
-	const { data, isLoading, isError, mutate } = useMutation('auth/register', {
+	const { isLoading, mutate } = useMutation('auth/register', {
 		mutationFn: data => axios.post('http://localhost:9060/api/v1/auth/register', data)
 	})
 
