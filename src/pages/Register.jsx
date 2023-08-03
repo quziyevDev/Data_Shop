@@ -1,15 +1,25 @@
+import { useRegister } from '@/queries/useRegister'
 import { Button, Form, Input } from 'antd'
-import axios from 'axios'
-import { useMutation } from 'react-query'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
-	const { isLoading, mutate } = useMutation('auth/register', {
-		mutationFn: data => axios.post('http://localhost:9060/api/v1/auth/register', data)
-	})
+	const { isLoading, mutate, isSuccess } = useRegister()
+	const navigate = useNavigate()
 
 	const onSubmit = formData => {
 		mutate(formData)
 	}
+
+	useEffect(() => {
+		if (isSuccess) {
+			navigate('/verification', {
+				state: {
+					verified: true
+				}
+			})
+		}
+	}, [isSuccess, navigate])
 
 	return (
 		<div className='h-screen grid place-items-center'>

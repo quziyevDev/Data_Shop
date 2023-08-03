@@ -2592,6 +2592,11 @@ react-is@^16.12.0, react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-otp-input@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-3.0.4.tgz#4867cc7e7e42a76d4757423aca03644cb96bba98"
+  integrity sha512-24GWRCguMmCatD3u9+mtxOcvoHZBJEtzzKQ/2cIOpr1yRn/umjxXw5d6mwRV8JnGhQqtIigD+k3Vt1ieuDBypg==
+
 react-query@^3.39.3:
   version "3.39.3"
   resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.39.3.tgz#4cea7127c6c26bdea2de5fb63e51044330b03f35"
@@ -2620,6 +2625,11 @@ react-router@6.14.2:
   integrity sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==
   dependencies:
     "@remix-run/router" "1.7.2"
+
+react-timer-hook@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-timer-hook/-/react-timer-hook-3.0.7.tgz#ac42c43d0034b873cbf97b44eb34ccb2b11fe5e0"
+  integrity sha512-ATpNcU+PQRxxfNBPVqce2+REtjGAlwmfoNQfcEBMZFxPj0r3GYdKhyPHdStvqrejejEi0QvqaJZjy2lBlFvAsA==
 
 react@^18.2.0:
   version "18.2.0"
