@@ -1,11 +1,22 @@
-import { Button, Card, Form, Input, Select } from 'antd'
+import { Button, Form, Input } from 'antd'
+import axios from 'axios'
+import { useMutation } from 'react-query'
 
 export default function Register() {
+	const { data, isLoading, isError, mutate } = useMutation('auth/register', {
+		mutationFn: data => axios.post('http://localhost:9060/api/v1/auth/register', data)
+	})
+
+	const onSubmit = formData => {
+		mutate(formData)
+	}
+
 	return (
 		<div className='h-screen grid place-items-center'>
 			<Form
+				onFinish={onSubmit}
 				layout='vertical'
-				component={Card}
+				// component={Card}
 				className='max-w-md w-full'
 			>
 				<Form.Item
@@ -35,28 +46,13 @@ export default function Register() {
 				<Form.Item
 					label='Phone'
 					name='phone'
-					help='exemple: 91 123 45 67'
 					rules={[
 						{
-							required: true,
-							len: 9
+							required: true
 						}
 					]}
 				>
-					<Input
-						addonBefore={
-							<Form.Item noStyle>
-								<Select
-									style={{ width: 60 }}
-									defaultValue={'+998'}
-									options={[
-										{ label: 'UZ', value: '+998' },
-										{ label: 'RU', value: '+7' }
-									]}
-								/>
-							</Form.Item>
-						}
-					/>
+					<Input prefix='+998' />
 				</Form.Item>
 
 				<Form.Item
@@ -91,7 +87,13 @@ export default function Register() {
 				</Form.Item>
 
 				<Form.Item>
-					<Button type='primary'>Sign Up</Button>
+					<Button
+						loading={isLoading}
+						htmlType='submit'
+						type='primary'
+					>
+						Sign Up
+					</Button>
 				</Form.Item>
 			</Form>
 		</div>
