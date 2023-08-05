@@ -1,7 +1,7 @@
 import { useRegister } from '@/queries/useRegister'
 import { Button, Form, Input } from 'antd'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Register() {
 	const { isLoading, mutate, isSuccess } = useRegister()
@@ -105,6 +105,7 @@ export default function Register() {
 						Sign Up
 					</Button>
 				</Form.Item>
+				Agar Akkaountingiz bo&apos;lsa: <Link to='/auth/login'>Login</Link>
 			</Form>
 		</div>
 	)
