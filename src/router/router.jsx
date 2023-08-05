@@ -1,3 +1,4 @@
+import Layout from '@/components/layout/Layout'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import RequireAuth from '@/pages/RequireAuth'
@@ -8,7 +9,12 @@ const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <RequireAuth />,
-		children: []
+		children: [
+			{
+				path: '/',
+				element: <Layout />
+			}
+		]
 	},
 	{
 		path: 'auth',

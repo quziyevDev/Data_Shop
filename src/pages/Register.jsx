@@ -13,7 +13,7 @@ export default function Register() {
 
 	useEffect(() => {
 		if (isSuccess) {
-			navigate('/verification', {
+			navigate('/auth/verification', {
 				state: {
 					verified: true
 				}

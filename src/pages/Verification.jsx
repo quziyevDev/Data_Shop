@@ -1,25 +1,37 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import OTPInput from 'react-otp-input'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Button, Space, Typography } from 'antd'
 import Timer from '@/components/verification/Timer'
 import { useVerification } from '@/queries/useVerification'
+import { AuthContext } from '@/providers/AuthProvider'
 
 export default function Verification() {
 	const { state } = useLocation()
 	const [nums, setNums] = useState(0)
 	const email = localStorage.getItem('email')
 	const [isExpired, setIsExpired] = useState(false)
-	const { isLoading, mutate } = useVerification()
+	const { isLoading, mutate, isSuccess } = useVerification()
+	const { login } = useContext(AuthContext)
+	const navigate = useNavigate()
 
 	const sendCode = () => {
 		mutate(nums)
 	}
 
+	useEffect(() => {
+		if (isSuccess) {
+			login()
+			navigate('/', {
+				replace: true
+			})
+		}
+	}, [isSuccess, navigate, login])
+
 	if (!state || !state.verified) {
 		return (
 			<Navigate
-				to='/'
+				to='/auth/login'
 				replace
 			/>
 		)

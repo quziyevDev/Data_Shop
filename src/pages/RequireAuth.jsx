@@ -4,8 +4,9 @@ import { AuthContext } from '@/providers/AuthProvider'
 
 export default function RequireAuth() {
 	const { isAuth } = useContext(AuthContext)
+	const user = JSON.parse(localStorage.getItem('user'))
 
-	if (isAuth) {
+	if (isAuth && user.role === 'admin') {
 		return <Outlet />
 	}
 
