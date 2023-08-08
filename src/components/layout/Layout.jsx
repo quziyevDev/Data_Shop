@@ -10,7 +10,7 @@ export default function Layout() {
 			<Header />
 			<AntLayout>
 				<Sidebar />
-				<AntLayout.Content>
+				<AntLayout.Content className='p-4'>
 					<Outlet />
 				</AntLayout.Content>
 			</AntLayout>

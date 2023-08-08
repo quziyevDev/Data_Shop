@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout'
+import Files from '@/pages/Files'
 import Login from '@/pages/Login'
 import PageNotFound from '@/pages/PageNotFound'
 import Register from '@/pages/Register'
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 				path: '/',
 				element: <Layout />,
 				children: [
+					{
+						path: '/files',
+						element: <Files />
+					},
 					{
 						path: '*',
 						element: <PageNotFound />

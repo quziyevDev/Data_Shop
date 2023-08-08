@@ -1,4 +1,13 @@
-import { Box, Layers, LayoutDashboard, ShoppingBasket, Ticket, UserCog, Users } from 'lucide-react'
+import {
+	Box,
+	ImagePlus,
+	Layers,
+	LayoutDashboard,
+	ShoppingBasket,
+	Ticket,
+	UserCog,
+	Users
+} from 'lucide-react'
 
 const menuItems = [
 	{
@@ -42,6 +51,12 @@ const menuItems = [
 		Icon: Users,
 		href: '/users',
 		permissions: ['supervisor']
+	},
+	{
+		title: 'Files',
+		Icon: ImagePlus,
+		href: '/files',
+		permissions: ['admin']
 	}
 ]
 
