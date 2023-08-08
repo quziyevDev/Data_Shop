@@ -2,6 +2,7 @@ import { Layout as AntLayout } from 'antd'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import Footer from './Footer'
+import { Outlet } from 'react-router-dom'
 
 export default function Layout() {
 	return (
@@ -9,7 +10,9 @@ export default function Layout() {
 			<Header />
 			<AntLayout>
 				<Sidebar />
-				<AntLayout.Content>Content</AntLayout.Content>
+				<AntLayout.Content>
+					<Outlet />
+				</AntLayout.Content>
 			</AntLayout>
 			<Footer />
 		</AntLayout>

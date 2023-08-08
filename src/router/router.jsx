@@ -1,5 +1,6 @@
 import Layout from '@/components/layout/Layout'
 import Login from '@/pages/Login'
+import PageNotFound from '@/pages/PageNotFound'
 import Register from '@/pages/Register'
 import RequireAuth from '@/pages/RequireAuth'
 import Verification from '@/pages/Verification'
@@ -12,7 +13,13 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Layout />
+				element: <Layout />,
+				children: [
+					{
+						path: '*',
+						element: <PageNotFound />
+					}
+				]
 			}
 		]
 	},

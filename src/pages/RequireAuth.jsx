@@ -6,7 +6,7 @@ export default function RequireAuth() {
 	const { isAuth } = useContext(AuthContext)
 	const user = JSON.parse(localStorage.getItem('user'))
 
-	if (isAuth && user.role === 'admin') {
+	if (isAuth && user && (user.role === 'admin' || user.role === 'supervisor')) {
 		return <Outlet />
 	}
 
