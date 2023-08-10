@@ -1,11 +1,7 @@
-// CRUD -> Create, Read, Update, Delete
-
 import api from '@/api'
 import { notification } from 'antd'
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-
-// [1,2,3,4,5]
 
 export const useFiles = () => {
 	const [files, setFiles] = useState([])

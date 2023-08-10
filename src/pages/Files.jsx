@@ -1,35 +1,21 @@
+import FileCard from '@/components/files/FileCard'
+import FileUpload from '@/components/files/FileUpload'
 import { useFiles } from '@/queries/useFiles'
 
 export default function Files() {
-	const { files, isLoading, create } = useFiles()
-
-	const submitHandler = e => {
-		e.preventDefault()
-		const formData = new FormData(e.target)
-		const data = Object.fromEntries(formData.entries())
-		create([data.files])
-	}
+	const { files } = useFiles()
 
 	return (
-		<div>
-			files
-			{isLoading && 'Loading...'}
+		<div className='grid grid-cols-5 gap-4'>
+			<FileUpload />
 			{files.map(file => {
 				return (
-					<img
-          width={100}
+					<FileCard
+						file={file}
 						key={file.id}
-						src={`${import.meta.env.VITE_APP_BASE_URL}/upload/${file.path}`}
 					/>
 				)
 			})}
-			<form onSubmit={submitHandler}>
-				<input
-					type='file'
-					name='files'
-				/>
-				<button className='block bg-red-400 mt-4'>create</button>
-			</form>
 		</div>
 	)
 }
