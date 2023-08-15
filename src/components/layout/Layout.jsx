@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 
 export default function Layout() {
 	return (
-		<AntLayout className='h-screen'>
+		<AntLayout className='h-screen overflow-hidden'>
 			<Header />
 			<AntLayout>
 				<Sidebar />
-				<AntLayout.Content className='p-4'>
+				<AntLayout.Content className='p-4 overflow-auto'>
 					<Outlet />
 				</AntLayout.Content>
 			</AntLayout>

@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const imgFormats = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/gif']
 
-const FileModal = ({ open, onClose }) => {
+const FileModal = ({ open, onClose, create }) => {
 	const [fileList, setFileList] = useState([])
 	return (
 		<>
@@ -63,6 +63,17 @@ const FileModal = ({ open, onClose }) => {
 						</div>
 					)
 				})}
+				<Button
+					type='primary'
+					block
+					onClick={() => {
+						create(fileList.map(file => file.file))
+						onClose()
+						setFileList([])
+					}}
+				>
+					Send
+				</Button>
 			</Modal>
 		</>
 	)
@@ -70,10 +81,11 @@ const FileModal = ({ open, onClose }) => {
 
 FileModal.propTypes = {
 	open: PropTypes.bool,
-	onClose: PropTypes.any
+	onClose: PropTypes.func,
+	create: PropTypes.func
 }
 
-export default function FileUpload() {
+export default function FileUpload({ create }) {
 	const [open, setOpen] = useState(false)
 
 	const onCancel = () => setOpen(false)
@@ -82,14 +94,19 @@ export default function FileUpload() {
 		<>
 			<div
 				onClick={() => setOpen(true)}
-				className='border-4 border-dashed grid place-items-center rounded-md cursor-pointer text-stone-400'
+				className='border-4 min-h-[250px] border-dashed grid place-items-center rounded-md cursor-pointer text-stone-400'
 			>
 				<PlusIcon />
 			</div>
 			<FileModal
+				create={create}
 				open={open}
 				onClose={onCancel}
 			/>
 		</>
 	)
+}
+
+FileUpload.propTypes = {
+	create: PropTypes.func
 }

@@ -38,6 +38,13 @@ export const useFiles = () => {
 		}
 	})
 
+	const remove = useMutation('files/remove', {
+		mutationFn: id => api.delete(`/upload/${id}`),
+		onSuccess(data) {
+			setFiles(files.filter(file => file.id !== data.data.icon.id))
+		}
+	})
+
 	useEffect(() => {
 		if (getAll.isLoading || create.isLoading) {
 			setIsLoading(true)
@@ -49,6 +56,7 @@ export const useFiles = () => {
 	return {
 		files,
 		isLoading,
-		create: create.mutate
+		create: create.mutate,
+		remove: remove.mutate
 	}
 }
