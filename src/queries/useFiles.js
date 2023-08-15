@@ -41,7 +41,7 @@ export const useFiles = () => {
 	const remove = useMutation('files/remove', {
 		mutationFn: id => api.delete(`/upload/${id}`),
 		onSuccess(data) {
-			setFiles(files.filter(file => file.id !== data.data.icon.id))
+			setFiles(files.filter(file => file.id !== data.data.file.id))
 		}
 	})
 
