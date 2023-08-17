@@ -1,22 +1,29 @@
 import api from '@/api'
+import { notification } from 'antd'
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 
 // CRUD - Create Read Update Delete
 
-export const useCategories = () => {
+export const useCategories = firstTime => {
 	const [categories, setCategires] = useState([])
 	const [isLoading, setIsLoading] = useState(false)
 	const getAll = useQuery('/categories/getAll', {
 		queryFn: () => api.get('/category'),
 		onSuccess: data => {
 			setCategires(data.data.category)
-		}
+		},
+		enabled: !firstTime
 	})
 	const create = useMutation('categories/create', {
 		mutationFn: data => api.post('/category', data),
 		onSuccess: data => {
 			setCategires(previus => [...previus, data.data.category])
+		},
+		onError: error => {
+			notification.error({
+				message: error.response.data.message
+			})
 		}
 	})
 

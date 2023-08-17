@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout'
+import Categories from '@/pages/Categories'
 import Files from '@/pages/Files'
 import Login from '@/pages/Login'
 import PageNotFound from '@/pages/PageNotFound'
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
 					{
 						path: '/files',
 						element: <Files />
+					},
+					{
+						path: '/category',
+						element: <Categories />
 					},
 					{
 						path: '*',
