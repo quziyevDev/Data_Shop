@@ -1,60 +1,18 @@
 import CategoriesModal from '@/components/categories/CategoriesModal'
+import { useModal } from '@/hooks/useModal'
 import { useCategories } from '@/queries/useCategories'
 import { Button, Image, Space, Table } from 'antd'
 import { Edit2, Trash2 } from 'lucide-react'
-import { useReducer } from 'react'
 
 export default function Categories() {
 	const { categories, isLoading, create, remove, update } = useCategories()
-	const [modalState, dispatch] = useReducer(
-		(_, action) => {
-			switch (action.type) {
-				case 'CREATE': {
-					return {
-						open: true,
-						type: 'create',
-						data: undefined
-					}
-				}
-				case 'UPDATE': {
-					return {
-						open: true,
-						data: action.payload,
-						type: 'update'
-					}
-				}
-				case 'CLOSE': {
-					return {
-						open: false,
-						type: 'create',
-						data: undefined
-					}
-				}
-				default:
-					return {
-						open: false,
-						type: 'create',
-						data: undefined
-					}
-			}
-		},
-		{
-			open: false,
-			type: 'create',
-			data: undefined
-		}
-	)
-
-	const onOpen = () => dispatch({ type: 'CREATE' })
-	const onOpenWithpayload = payload => dispatch({ type: 'UPDATE', payload })
-	const onCancel = () => dispatch({ type: 'CLOSE' })
-
+	const { modalState, onOpen, onClose, onOpenWithpayload } = useModal()
 	return (
 		<>
 			<Button onClick={onOpen}>Create</Button>
 			<CategoriesModal
 				modalState={modalState}
-				onCancel={onCancel}
+				onCancel={onClose}
 				create={create}
 				update={update}
 			/>

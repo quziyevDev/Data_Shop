@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout'
+import Brands from '@/pages/Brands'
 import Categories from '@/pages/Categories'
 import Files from '@/pages/Files'
 import Login from '@/pages/Login'
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
 					{
 						path: '/category',
 						element: <Categories />
+					},
+					{
+						path: '/brands',
+						element: <Brands />
 					},
 					{
 						path: '*',
